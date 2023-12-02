@@ -17,7 +17,9 @@ public class TEST extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 drive.setWrist(true);
 drive.initArm();
-drive.
+drive.setHeight(12);
+drive.setExtension(12);
+
     }
 
     /*
