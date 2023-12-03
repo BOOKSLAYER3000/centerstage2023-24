@@ -14,8 +14,7 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 public class Foreducation extends LinearOpMode {
 
 
-
-   private SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+   private SampleMecanumDrive drive ;
 
    private Pose2d startPose = new Pose2d();
     private Pose2d PoseTwo = new Pose2d();
@@ -26,6 +25,7 @@ public class Foreducation extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        drive = new SampleMecanumDrive(hardwareMap);
         drive.setPoseEstimate(startPose);
        TrajectorySequence move = drive.trajectorySequenceBuilder(startPose)
                 .lineToSplineHeading(PoseTwo)

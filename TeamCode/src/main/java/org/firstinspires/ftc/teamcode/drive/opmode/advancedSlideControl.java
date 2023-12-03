@@ -13,7 +13,7 @@ public class advancedSlideControl {
 
     // Create motor, servo, and gyro objects
     private DcMotorEx slideLeft, slideRight, slideTop;
-    private Servo leftGripServo, rightGripServo;
+    private Servo gripServo, wristGripServo;
 
     // Create robot class
     public advancedSlideControl(final HardwareMap _hardwareMap) {
@@ -23,10 +23,11 @@ public class advancedSlideControl {
         // Do the same thing we did earlier with the drive motors, just for the slide
         slideLeft = hardwareMap.get(DcMotorEx.class, "slideleft");
         slideRight = hardwareMap.get(DcMotorEx.class, "slideRight");
-        slideTop = hardwareMap.get(DcMotorEx.class, "slideTop");
-
-        leftGripServo = hardwareMap.servo.get("leftGripServo");
-        rightGripServo = hardwareMap.servo.get("rightGripServo");
+        //slideTop = hardwareMap.get(DcMotorEx.class, "slideTop");
+        gripServo =hardwareMap.servo.get("gripServo");
+        wristGripServo = hardwareMap.servo.get("wristGripServo");
+      //  leftGripServo = hardwareMap.servo.get("leftGripServo");
+      //  rightGripServo = hardwareMap.servo.get("rightGripServo");
     }
 
     // This function accepts a motor mode followed by a list of DcMotor objects

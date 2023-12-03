@@ -18,10 +18,10 @@ public class TEST extends LinearOpMode {
 drive.setWrist(true);
 drive.initArm();
 drive.setHeight(12);
-drive.setExtension(12);
+//drive.setExtension(1200);
 //yo this is graeme miracle
         //this is test
-        //test2 
+        //test2
 
     }
 

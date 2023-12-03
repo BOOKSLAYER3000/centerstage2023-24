@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.opmode.ManualOp.manuel;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -11,7 +12,7 @@ import org.firstinspires.ftc.teamcode.drive.opmode.ManualOp.manuelHelpers.Contro
 //@Disabled
 
 /** this is What WORKS **/
-
+@Config
 
 @TeleOp(name = "THIS IS WHAT WORKS - Manual Op")
 public class ManualOp extends OpMode {
@@ -25,6 +26,7 @@ public class ManualOp extends OpMode {
     DcMotor slideRight;
     DcMotor slideTop;
     Servo gripServo;
+    Servo wristGripServo;
 
 
 
@@ -36,8 +38,9 @@ public class ManualOp extends OpMode {
         rightRear = hardwareMap.dcMotor.get("rightRear");
         slideLeft = hardwareMap.dcMotor.get("slideLeft");
         slideRight = hardwareMap.dcMotor.get("slideRight");
-        slideTop = hardwareMap.dcMotor.get("intakeMotor");
+        //slideTop = hardwareMap.dcMotor.get("intakeMotor");
         gripServo = hardwareMap.servo.get("gripServo");
+        wristGripServo = hardwareMap.servo.get("wristGripServo");
 
         gripServo.setPosition(0.5);
 
@@ -57,28 +60,37 @@ public class ManualOp extends OpMode {
         rightFront.setPower((y - x - rx));
         rightRear.setPower((y + x + rx));
 
-        double vert = -gamepad2.left_stick_y;
-        double top = gamepad2.right_stick_x;
+        double vert = -gamepad2.right_stick_y;
+       // double top = gamepad2.right_stick_x;
 
         slideLeft.setPower(-vert);
         slideRight.setPower(vert);
-        slideTop.setPower(top);
+       // slideTop.setPower(top);
 
-        double servoSpeed = ((gamepad2.right_trigger - gamepad2.left_trigger) + 1) / 2;
+        //double servoSpeed = ((gamepad2.right_trigger - gamepad2.left_trigger) + 1) / 2;
 
-        telemetry.addData("servo speed: ", servoSpeed);
-        telemetry.update();
+      //  telemetry.addData("servo speed: ", servoSpeed);
+      //  telemetry.update();
 
 
         //These are the breaks
         //the way these are called will be different in the classes with the helpers
 
-        slideLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+     //   slideLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+     //   slideRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
 
-        gripServo.setPosition(servoSpeed);
+      //  gripServo.setPosition(servoSpeed);
+        if (gamepad2.left_stick_x > .5 || gamepad2.left_stick_y > .5)
+        {
+            gripServo.setPosition(30);
+            wristGripServo.setPosition(30);
+        } else {
 
+            gripServo.setPosition(0);
+            wristGripServo.setPosition(0);
+
+        }
     }
 }

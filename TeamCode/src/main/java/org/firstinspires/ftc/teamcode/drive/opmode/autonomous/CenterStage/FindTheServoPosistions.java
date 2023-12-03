@@ -18,8 +18,8 @@ public class FindTheServoPosistions extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         while (!isStarted()) {
-            telemetry.addData("Servo Posistion ", drive.leftGripServo.getPosition());
-            telemetry.addData("claw Posistion" , drive.rightGripServo.getPosition());
+            telemetry.addData("Servo Posistion ", drive.gripServo.getPosition());
+          //  telemetry.addData("claw Posistion" , drive.rightGripServo.getPosition());
             telemetry.addData("claw Posistion" , drive.wristGripServo.getPosition());
             telemetry.addData("slide",drive.slideLeft.getCurrentPosition());
             telemetry.update();
